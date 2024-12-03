@@ -1,0 +1,35 @@
+package cl.ipvg.happyappv2;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class ContactActivity extends AppCompatActivity {
+
+    Button btRegresarContact;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_contact);
+
+        btRegresarContact = (Button) findViewById(R.id.btRegresarContact);
+
+        Intent intentregresarcontact = new Intent(this, MainActivity2.class);
+
+        btRegresarContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(intentregresarcontact);
+            }
+        });
+    }
+}

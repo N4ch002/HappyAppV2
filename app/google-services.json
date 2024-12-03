@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "441706291658",
+    "project_id": "happyappdatabase",
+    "storage_bucket": "happyappdatabase.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:441706291658:android:b3687f53371f32cceeaf33",
+        "android_client_info": {
+          "package_name": "cl.ipvg.happyappv2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2eQNQYGre8Zr9cyrgs0gQznI7P8d2Fwc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

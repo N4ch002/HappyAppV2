@@ -1,0 +1,36 @@
+package cl.ipvg.happyappv2;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class NotasActivity extends AppCompatActivity {
+
+    Button btRegresarNotas;
+    @SuppressLint("MissingInflatedId")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_notas);
+
+        btRegresarNotas = (Button) findViewById(R.id.btRegresarNotas);
+
+        Intent intentregresarnotas = new Intent(this, MainActivity2.class);
+
+        btRegresarNotas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(intentregresarnotas);
+            }
+        });
+    }
+}

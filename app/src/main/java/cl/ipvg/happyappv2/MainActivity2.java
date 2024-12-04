@@ -1,8 +1,11 @@
 package cl.ipvg.happyappv2;
 
+import static android.content.ContentValues.TAG;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -28,11 +31,15 @@ public class MainActivity2 extends AppCompatActivity {
         btGuias = (Button) findViewById(R.id.btGuias);
         btAgenda = (Button) findViewById(R.id.btAgenda);
 
+        String userId = getIntent().getStringExtra("USER_ID");
+
+
         Intent intentcontact = new Intent(this, ContactActivity.class);
 
         btContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 startActivity(intentcontact);
             }
         });
@@ -42,6 +49,7 @@ public class MainActivity2 extends AppCompatActivity {
         btNotas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+            intentnotas.putExtra("USER_ID", userId);
                 startActivity(intentnotas);
             }
         });

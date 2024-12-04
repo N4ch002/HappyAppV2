@@ -41,27 +41,35 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btGuardar"
-            android:layout_width="wrap_content"
+
+        <EditText
+            android:id="@+id/etTitle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="116dp"
-            android:text="Guardar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btEliminar"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_marginTop="396dp"
+            android:hint="Título"
+            app:layout_constraintTop_toTopOf="@+id/listView"
+            tools:layout_editor_absoluteX="-4dp" />
+
+        <EditText
+            android:id="@+id/etContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
+            android:hint="Contenido"
+            android:minLines="4"
+            app:layout_constraintBottom_toTopOf="@+id/btAñadir"
+            tools:layout_editor_absoluteX="0dp" />
 
         <Button
-            android:id="@+id/btEliminar"
+            android:id="@+id/btAñadir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="116dp"
-            android:text="Eliminar"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Añadir Nota"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/btGuardar" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/btRegresarNotas"
@@ -72,29 +80,13 @@
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="298dp" />
 
-        <EditText
-            android:id="@+id/etTitulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="128dp"
-            android:ems="10"
-            android:inputType="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="358dp"
+            android:layout_height="381dp"
+            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/etDescripcion"
-            android:layout_width="353dp"
-            android:layout_height="355dp"
-            android:layout_marginTop="188dp"
-            android:ems="10"
-            android:inputType="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

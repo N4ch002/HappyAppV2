@@ -29,7 +29,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btIngresar, btBorrar;
+    Button btIngresar, btBorrar, btRegistar;
     EditText etUsuario, etContra;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -40,10 +40,12 @@ public class MainActivity extends AppCompatActivity {
 
         btIngresar = (Button) findViewById(R.id.btIngresar);
         btBorrar = (Button) findViewById(R.id.btBorrar);
+        btRegistar = (Button) findViewById(R.id.btRegistrar);
         etUsuario = (EditText) findViewById(R.id.etUsuario);
         etContra = (EditText) findViewById(R.id.etContra);
 
         Intent intent = new Intent(this, MainActivity2.class);
+        Intent intentregistro = new Intent(this, RegistroActivity.class);
 
         btBorrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +55,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btRegistar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(intentregistro);
+            }
+        });
 
 
 

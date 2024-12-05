@@ -86,7 +86,7 @@ public class NotasActivity extends AppCompatActivity {
                 addNote();
             }
         });
-        btRegresarNotas = (Button) findViewById(R.id.btRegresarNotas);
+        btRegresarNotas = findViewById(R.id.btRegresarNotas);
 
         Intent intentregresarnotas = new Intent(this, MainActivity2.class);
 

@@ -26,10 +26,10 @@ public class MainActivity2 extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main2);
 
-        btContact = (Button) findViewById(R.id.btContact);
-        btNotas = (Button) findViewById(R.id.btNotas);
-        btGuias = (Button) findViewById(R.id.btGuias);
-        btAgenda = (Button) findViewById(R.id.btAgenda);
+        btContact = findViewById(R.id.btContact);
+        btNotas = findViewById(R.id.btNotas);
+        btGuias = findViewById(R.id.btGuias);
+        btAgenda = findViewById(R.id.btAgenda);
 
         String userId = getIntent().getStringExtra("USER_ID");
 

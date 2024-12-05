@@ -20,7 +20,7 @@ public class AgendaActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_agenda);
 
-        btRegresarAgenda = (Button) findViewById(R.id.btRegresarAgenda);
+        btRegresarAgenda = findViewById(R.id.btRegresarAgenda);
 
         Intent intentregresaragenda = new Intent(this, MainActivity2.class);
 

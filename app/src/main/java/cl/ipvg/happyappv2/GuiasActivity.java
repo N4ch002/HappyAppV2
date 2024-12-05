@@ -20,7 +20,7 @@ public class GuiasActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_guias);
 
-        btRegresarGuias = (Button) findViewById(R.id.btRegresarGuias);
+        btRegresarGuias = findViewById(R.id.btRegresarGuias);
 
         Intent intentregresarguias = new Intent(this, MainActivity2.class);
 

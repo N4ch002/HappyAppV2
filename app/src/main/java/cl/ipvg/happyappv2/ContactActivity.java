@@ -21,7 +21,7 @@ public class ContactActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_contact);
 
-        btRegresarContact = (Button) findViewById(R.id.btRegresarContact);
+        btRegresarContact = findViewById(R.id.btRegresarContact);
 
         Intent intentregresarcontact = new Intent(this, MainActivity2.class);
 

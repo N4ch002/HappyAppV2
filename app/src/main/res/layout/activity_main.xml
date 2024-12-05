@@ -22,6 +22,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="370dp"
             android:layout_height="690dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:background="#8EFABE"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -77,9 +79,10 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="3dp"
                 android:text="D-Gital Inc. 2022-2024."
                 app:layout_constraintBottom_toBottomOf="parent"
-                tools:layout_editor_absoluteX="225dp" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/textView4"

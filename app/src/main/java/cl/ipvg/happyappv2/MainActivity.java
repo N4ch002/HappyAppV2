@@ -2,6 +2,8 @@ package cl.ipvg.happyappv2;
 
 import static android.content.ContentValues.TAG;
 
+import cl.ipvg.happyappv2.Classes.Users;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,11 +40,11 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        btIngresar = (Button) findViewById(R.id.btIngresar);
-        btBorrar = (Button) findViewById(R.id.btBorrar);
-        btRegistar = (Button) findViewById(R.id.btRegistrar);
-        etUsuario = (EditText) findViewById(R.id.etUsuario);
-        etContra = (EditText) findViewById(R.id.etContra);
+        btIngresar = findViewById(R.id.btIngresar);
+        btBorrar = findViewById(R.id.btBorrar);
+        btRegistar = findViewById(R.id.btRegistro);
+        etUsuario = findViewById(R.id.etUsuario);
+        etContra = findViewById(R.id.etContra);
 
         Intent intent = new Intent(this, MainActivity2.class);
         Intent intentregistro = new Intent(this, RegistroActivity.class);
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         btRegistar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 startActivity(intentregistro);
             }
         });
@@ -78,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                CheckIfUserIsInDatabase(usuario, contraseña, new OnCheckUserListener() {
+                Users.CheckIfUserIsInDatabase(usuario, contraseña, new Users.OnCheckUserListener() {
                     @Override
                     public void onResult(boolean exists, String userId) {
                         if (exists && userId != null) {
@@ -106,87 +109,15 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private void CheckIfUserIsInDatabase(String usuario, String contraseña, OnCheckUserListener listener) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        db.collection("users")
-                .whereEqualTo("user", usuario)
-                .whereEqualTo("pass", contraseña)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            if (!task.getResult().isEmpty()) {
-                                // Obtiene el ID del primer documento coincidente
-                                String userId = task.getResult().getDocuments().get(0).getId();
-                                listener.onResult(true, userId);
-                            } else {
-                                listener.onResult(false, null);
-                            }
-                        } else {
-                            Log.w(TAG, "Error checking user.", task.getException());
-                            listener.onResult(false, null);
-                        }
-                    }
-                });
-    }
-
-    public interface OnCheckUserListener {
-        void onResult(boolean exists, String userId);
-    }
 
 
 
 
 
-    private void crearUsuario(String usuario, String contraseña) {
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        // Create a new user with a first and last name
-        Map<String, Object> user = new HashMap<>();
-        user.put("user", usuario);
-        user.put("pass", contraseña);
-
-        // Add a new document with a generated ID
-        db.collection("users")
-                .add(user)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
-                    }
-                });
-    }
 
 
 
 
-    private  void  GetUsuarios(){
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        db.collection("users")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                            }
-                        } else {
-                            Log.w(TAG, "Error getting documents.", task.getException());
-                        }
-                    }
-                });
-    }
 
 
 }

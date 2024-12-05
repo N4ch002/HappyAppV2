@@ -17,7 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    Button btContact, btNotas, btGuias, btAgenda;
+    Button btContact, btNotas, btGuias, btAgenda, btOpciones;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -27,11 +27,24 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         btContact = findViewById(R.id.btContact);
+        btOpciones = findViewById(R.id.btOpcionesCuenta);
         btNotas = findViewById(R.id.btNotas);
         btGuias = findViewById(R.id.btGuias);
         btAgenda = findViewById(R.id.btAgenda);
 
         String userId = getIntent().getStringExtra("USER_ID");
+
+
+        Intent intentOpciones = new Intent(this, OpcionesActivity.class);
+
+        btOpciones.setOnClickListener(new View.OnClickListener() {
+                @Override
+                                          public void onClick(View view) {
+                                              intentOpciones.putExtra("USER_ID", userId);
+                                              startActivity(intentOpciones);
+                                          }
+                                      });
+
 
 
         Intent intentcontact = new Intent(this, ContactActivity.class);

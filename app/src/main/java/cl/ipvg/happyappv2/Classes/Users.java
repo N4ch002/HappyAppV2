@@ -11,6 +11,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -21,6 +22,31 @@ import java.util.Map;
 import cl.ipvg.happyappv2.MainActivity;
 
  public class Users {
+
+     public static void CheckIfPasswordIsCorrect(String userId, String contraseña, OnCheckUserListener listener) {
+         FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+         db.collection("users")
+                 .document(userId) // Busca directamente por ID
+                 .get()
+                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                     @Override
+                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                         if (task.isSuccessful() && task.getResult().exists()) {
+                             String storedPassword = task.getResult().getString("pass");
+                             if (storedPassword != null && storedPassword.equals(contraseña)) {
+                                 listener.onResult(true, userId);
+                             } else {
+                                 listener.onResult(false, null);
+                             }
+                         } else {
+                             listener.onResult(false, null);
+                         }
+                     }
+                 });
+     }
+
+
      public static void CheckIfUserIsInDatabase(String usuario, String contraseña, OnCheckUserListener listener) {
          FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -82,53 +108,38 @@ import cl.ipvg.happyappv2.MainActivity;
      }
 
 
-     public static void cambiarContraseña(String usuario, String nuevaContraseña, OnOperationCompleteListener listener) {
+     public static void cambiarContraseña(String userId, String nuevaContraseña, OnOperationCompleteListener listener) {
          FirebaseFirestore db = FirebaseFirestore.getInstance();
 
          db.collection("users")
-                 .whereEqualTo("user", usuario)
-                 .get()
-                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                     @Override
-                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                         if (task.isSuccessful() && !task.getResult().isEmpty()) {
-                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                 db.collection("users").document(document.getId())
-                                         .update("pass", nuevaContraseña)
-                                         .addOnSuccessListener(aVoid -> listener.onComplete(true))
-                                         .addOnFailureListener(e -> listener.onComplete(false));
-                             }
-                         } else {
-                             listener.onComplete(false);  // Usuario no encontrado
-                         }
-                     }
-                 });
+                 .document(userId) // Accede directamente al documento por su ID
+                 .update("pass", nuevaContraseña) // Actualiza solo el campo "pass"
+                 .addOnSuccessListener(aVoid -> listener.onComplete(true)) // Éxito
+                 .addOnFailureListener(e -> listener.onComplete(false)); // Error
      }
 
 
 
-     public static void borrarUsuario(String usuario, OnOperationCompleteListener listener) {
+
+     public static void borrarUsuario(String userId, OnOperationCompleteListener listener) {
          FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-         db.collection("users")
-                 .whereEqualTo("user", usuario)
-                 .get()
-                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+         db.collection("users").document(userId)
+                 .delete()
+                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                      @Override
-                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                         if (task.isSuccessful() && !task.getResult().isEmpty()) {
-                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                 db.collection("users").document(document.getId())
-                                         .delete()
-                                         .addOnSuccessListener(aVoid -> listener.onComplete(true))
-                                         .addOnFailureListener(e -> listener.onComplete(false));
-                             }
-                         } else {
-                             listener.onComplete(false);  // Usuario no encontrado
-                         }
+                     public void onSuccess(Void aVoid) {
+                         listener.onComplete(true);
+                     }
+                 })
+                 .addOnFailureListener(new OnFailureListener() {
+                     @Override
+                     public void onFailure(@NonNull Exception e) {
+                         listener.onComplete(false);
                      }
                  });
      }
+
 
 
      public static void crearUsuario(String usuario, String contraseña) {

@@ -31,11 +31,21 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/btContact"
+            android:id="@+id/btOpcionesCuenta"
             android:layout_width="120dp"
             android:layout_height="40dp"
             android:layout_marginStart="12dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="32dp"
+            android:text="Opciones"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btContact"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="264dp"
+            android:layout_marginBottom="32dp"
             android:text="Contactos"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

@@ -62,31 +62,82 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textViewNota"
+        <Button
+            android:id="@+id/btModificar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="****"
-            tools:layout_editor_absoluteX="64dp"
-            tools:layout_editor_absoluteY="563dp" />
+            android:layout_marginEnd="19dp"
+            android:layout_marginBottom="57dp"
+            android:text="Modificar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btBorrarHoy"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="DuplicateClickableBoundsCheck" />
 
         <Button
-            android:id="@+id/btAgregar"
+            android:id="@+id/btGuardar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Agregar"
-            tools:layout_editor_absoluteX="244dp"
-            tools:layout_editor_absoluteY="456dp" />
+            android:layout_marginEnd="19dp"
+            android:layout_marginBottom="57dp"
+            android:text="Guardar"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btBorrarHoy"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <EditText
-            android:id="@+id/editTextText"
+        <Button
+            android:id="@+id/btBorrarHoy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name"
-            tools:layout_editor_absoluteX="20dp"
-            tools:layout_editor_absoluteY="457dp" />
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="8dp"
+            android:text="Borrar"
+            app:layout_constraintBottom_toTopOf="@+id/btRegresarAgenda"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayout" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="13dp"
+            android:background="#A65FCAD4"
+            app:layout_constraintBottom_toTopOf="@+id/btModificar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calendarView">
+
+            <TextView
+                android:id="@+id/textViewEventos"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:text="Nada agendado para este dia."
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextModificarAgenda"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="12dp"
+                android:ems="10"
+                android:inputType="text"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,7 +19,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.HashMap;
 import java.util.Map;
 
-import cl.ipvg.happyappv2.MainActivity;
 
  public class Users {
 

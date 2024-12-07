@@ -17,7 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    Button btContact, btNotas, btGuias, btAgenda, btOpciones;
+    Button btContact, btNotas, btGuias, btAgenda, btOpciones, btMapa;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -31,6 +31,7 @@ public class MainActivity2 extends AppCompatActivity {
         btNotas = findViewById(R.id.btNotas);
         btGuias = findViewById(R.id.btGuias);
         btAgenda = findViewById(R.id.btAgenda);
+        btMapa = findViewById(R.id.btMapa);
 
         String userId = getIntent().getStringExtra("USER_ID");
 
@@ -85,5 +86,13 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
+        Intent intentmapa = new Intent(this, MapaActivity.class);
+
+        btMapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(intentmapa);
+            }
+        });
     }
 }

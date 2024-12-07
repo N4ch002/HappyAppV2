@@ -57,7 +57,9 @@
             android:layout_marginBottom="4dp"
             android:text="D-Gital Inc. 2022-2024."
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_editor_absoluteX="243dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.935"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/btNotas"

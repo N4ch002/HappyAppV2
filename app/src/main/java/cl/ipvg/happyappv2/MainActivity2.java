@@ -39,60 +39,62 @@ public class MainActivity2 extends AppCompatActivity {
         Intent intentOpciones = new Intent(this, OpcionesActivity.class);
 
         btOpciones.setOnClickListener(new View.OnClickListener() {
-                @Override
-                                          public void onClick(View view) {
-                                              intentOpciones.putExtra("USER_ID", userId);
-                                              startActivity(intentOpciones);
-                                          }
-                                      });
+            @Override
+            public void onClick(View view) {
+                intentOpciones.putExtra("USER_ID", userId);
+                startActivity(intentOpciones);
+            }
+        });
 
-
-
-        Intent intentcontact = new Intent(this, ContactActivity.class);
 
         btContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                startActivity(intentcontact);
+                Intent intent = new Intent(getApplicationContext(), ContactActivity.class);
+                intent.putExtra("USER_ID", userId);
+                startActivity(intent);
             }
         });
 
-        Intent intentnotas = new Intent(this, NotasActivity.class);
 
         btNotas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            intentnotas.putExtra("USER_ID", userId);
-                startActivity(intentnotas);
+                Intent intent = new Intent(getApplicationContext(), NotasActivity.class);
+
+                intent.putExtra("USER_ID", userId);
+                startActivity(intent);
             }
         });
 
-        Intent intentguias = new Intent(this, GuiasActivity.class);
 
         btGuias.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(intentguias);
+                Intent intent = new Intent(getApplicationContext(), GuiasActivity.class);
+                intent.putExtra("USER_ID", userId);
+                startActivity(intent);
             }
         });
 
-        Intent intentagenda = new Intent(this, AgendaActivity.class);
 
         btAgenda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(intentagenda);
+                Intent intent = new Intent(getApplicationContext(), AgendaActivity.class);
+                intent.putExtra("USER_ID", userId);
+                startActivity(intent);
             }
         });
 
-        Intent intentmapa = new Intent(this, MapaActivity.class);
 
         btMapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(intentmapa);
+                Intent intent = new Intent(getApplicationContext(), MapaActivity.class);
+                intent.putExtra("USER_ID", userId);
+                startActivity(intent);
             }
         });
+        }
     }
-}

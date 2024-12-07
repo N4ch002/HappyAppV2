@@ -23,12 +23,16 @@ public class ContactActivity extends AppCompatActivity {
 
         btRegresarContact = findViewById(R.id.btRegresarContact);
 
-        Intent intentregresarcontact = new Intent(this, MainActivity2.class);
+        String userId = getIntent().getStringExtra("USER_ID");
 
         btRegresarContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(intentregresarcontact);
+                Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+                intent.putExtra("USER_ID", userId);
+                startActivity(intent);
+
+
             }
         });
     }

@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="CoarseFineLocation">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -16,6 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HappyAppV2"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAelkf43P6l98L5r0QM1i95Zt7rGPONYV0" />
+        <activity
+            android:name=".MapaActivity2"
+            android:exported="false" />
         <activity
             android:name=".OpcionesActivity"
             android:exported="false"
@@ -34,10 +41,6 @@
              project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
              "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
         -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDxDkzo8cWTdKJO4digplabBET6LNMumqo" />
-
         <activity
             android:name=".MapaActivity"
             android:exported="false" />

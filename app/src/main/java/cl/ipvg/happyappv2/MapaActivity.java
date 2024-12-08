@@ -1,8 +1,11 @@
 package cl.ipvg.happyappv2;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -31,12 +34,14 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
     private TextView tvLocacion;
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
     private GoogleMap mMap;
-
+    Button btRegresarMapa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
+
+        btRegresarMapa = (Button) findViewById(R.id.btRegresarMapa);
 
         tvLocacion = findViewById(R.id.tvLocacion);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -46,6 +51,15 @@ public class MapaActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapFragment.getMapAsync(this);
 
         getCurrentLocation();
+
+        Intent intentregresarmapa = new Intent(this, MainActivity2.class);
+
+        btRegresarMapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(intentregresarmapa);
+            }
+        });
     }
 
     private void getCurrentLocation(){

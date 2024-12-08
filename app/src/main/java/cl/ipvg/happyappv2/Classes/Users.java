@@ -16,7 +16,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -185,6 +187,40 @@ import java.util.Map;
                          }
                      });
          }
+     public static void obtenerGuiasDeFirestore(Callback<List<Guia>> callback) {
+         // Referencia a la base de datos Firestore
+         FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+         // Lista para almacenar las guías obtenidas
+         List<Guia> listaGuias = new ArrayList<>();
+
+         // Consulta a la colección "guias"
+         db.collection("guias")
+                 .get()
+                 .addOnCompleteListener(task -> {
+                     if (task.isSuccessful()) {
+                         // Itera sobre los documentos obtenidos
+                         for (QueryDocumentSnapshot document : task.getResult()) {
+                             // Extrae los datos del documento
+                             String titulo = document.getString("titulo");
+                             String descripcion = document.getString("descripcion");
+
+                             // Crea un objeto Guia y lo agrega a la lista
+                             listaGuias.add(new Guia(titulo, descripcion));
+                         }
+                         // Devuelve la lista a través del callback
+                         callback.onSuccess(listaGuias);
+                     } else {
+                         // Manejo de errores
+                         callback.onFailure(task.getException());
+                     }
+                 });
+
+     }
+     public interface Callback<T> {
+         void onSuccess(T result);
+         void onFailure(Exception e);
+     }
 
 
  }

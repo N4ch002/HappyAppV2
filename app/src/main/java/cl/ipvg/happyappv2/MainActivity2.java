@@ -36,13 +36,13 @@ public class MainActivity2 extends AppCompatActivity {
         String userId = getIntent().getStringExtra("USER_ID");
 
 
-        Intent intentOpciones = new Intent(this, OpcionesActivity.class);
 
         btOpciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intentOpciones.putExtra("USER_ID", userId);
-                startActivity(intentOpciones);
+                Intent intent = new Intent(getApplicationContext(), OpcionesActivity.class);
+                intent.putExtra("USER_ID", userId);
+                startActivity(intent);
             }
         });
 
